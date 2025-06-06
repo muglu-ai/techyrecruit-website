@@ -4,7 +4,7 @@ import { manpowerLevels, serviceAreas } from '../app/recruitment-process/recruit
 
 const ManPower: React.FC = () => {
     return (
-        // Add this wrapper div
+        // Add this wrapper div to apply the CSS module styles
         <div className={styles.manpowerContainer}> 
             <section className={styles.section}>
                 <h2 className={styles.sectionHeading}>Level of Manpower/Hiring Services:</h2>
