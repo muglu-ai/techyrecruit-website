@@ -22,7 +22,7 @@ const NavBar: React.FC = () => (
                 <div className="flex items-center space-x-2">
                     <div className="w-[151px] h-[54px] rounded-lg flex items-center justify-center">
                         <img
-                            src="https://xinterviewgern.s3.amazonaws.com/Company/logo/1570/logo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3YSVLTZMXMZPLAS4%2F20250604%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20250604T161420Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9b7d05be911e3047cb48a286ec67565d044c1c716956899d17c8672a6a352910"
+                            src="/logo.png"
                             alt="TechyRecruit Logo"
                             className="w-[151px] h-[54px] object-contain"
                         />
