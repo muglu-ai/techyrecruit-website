@@ -1,0 +1,33 @@
+/* src/styles/ResponsiveRecruitmentFlow.module.css */
+.flowContainer {
+  /* Container for both versions, no specific layout needed here unless you want margins etc. */
+  margin: 20px 0; /* Example margin */
+}
+
+.desktopDiagram {
+  display: block; /* Visible by default (on larger screens) */
+}
+
+.mobileImage {
+  display: none; /* Hidden by default (on larger screens) */
+  width: 100%;
+  max-width: 600px; /* Or your preferred max-width for the mobile image */
+  margin: 0 auto; /* Center the image container */
+}
+
+.mobileImage img { /* Styling the actual img tag rendered by next/image */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* Media query to switch visibility */
+@media (max-width: 768px) { /* Your chosen breakpoint */
+  .desktopDiagram {
+    display: none; /* Hide the CSS diagram on smaller screens */
+  }
+
+  .mobileImage {
+    display: block; /* Show the fallback image on smaller screens */
+  }
+}

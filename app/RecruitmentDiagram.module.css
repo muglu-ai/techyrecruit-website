@@ -1,0 +1,174 @@
+/* src/styles/RecruitmentDiagram.module.css */
+.flowContainer {
+  /* Container for both versions, no specific layout needed here unless you want margins etc. */
+  margin: 20px 0; /* Example margin */
+}
+
+
+.desktopDiagram {
+  display: block; /* Visible by default (on larger screens) */
+}
+
+.mobileImage {
+  display: none; /* Hidden by default (on larger screens) */
+  width: 100%;
+  max-width: 600px; /* Or your preferred max-width for the mobile image */
+  margin: 0 auto; /* Center the image container */
+}
+
+.mobileImage img { /* Styling the actual img tag rendered by next/image */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.fallbackImageContainer {
+  display: none; /* Hidden by default on larger screens */
+  width: 100%;
+  max-width: 600px; /* Max width for the image on mobile, adjust as needed */
+  margin: 20px auto; /* Center it */
+}
+
+.fallbackImageContainer img { /* Style the actual img tag rendered by next/image */
+  border-radius: 8px; /* Optional: if you want rounded corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow */
+}
+
+
+.diagramContainer {
+  position: relative;
+  width: 700px;
+  height: 550px;
+  margin: 40px auto; /* Or remove margin if handled by ResponsiveRecruitmentFlow */
+  transform: scale(0.9);
+  /* display: block; Ensure it's visible by default. Its parent will hide it. */
+}
+
+.processItem {
+  background-color: #d90429; /* Red color from image */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem; /* Base font size for items */
+}
+
+.centerCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px; /* Size of the central circle */
+  height: 220px;
+  border-radius: 50%; /* Make it a circle */
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 10;
+  line-height: 1.2;
+}
+
+.processStep {
+  position: absolute;
+  width: 180px; /* Width of the step boxes */
+  min-height: 70px; /* Min height for the step boxes */
+  z-index: 5;
+}
+
+/* Positioning for each step - these are approximate for a circular layout */
+/* Top: Make A Job Offer */
+.step1 { top: 0%; left: 50%; transform: translateX(-50%); }
+/* Top-Right: Identify Skills Gaps */
+.step2 { top: 20%; left: 85%; transform: translate(-50%, -50%); width: 200px;}
+/* Bottom-Right: Formulate Job Descriptions */
+.step3 { top: 70%; left: 90%; transform: translate(-50%, -50%); width: 210px;}
+/* Bottom: Review Job Applications */
+.step4 { top: 90%; left: 50%; transform: translateX(-50%); }
+/* Bottom-Left: Interview Potential Candidates */
+.step5 { top: 70%; left: 10%; transform: translate(-50%, -50%); }
+/* Top-Left: Select The Most Suitable Candidates */
+.step6 { top: 20%; left: 15%; transform: translate(-50%, -50%); }
+
+
+/* ARROWS - Basic CSS Arrows using borders */
+.arrowFlow {
+  position: absolute;
+  width: 30px; /* Width of the arrow "line" part */
+  height: 8px; /* Thickness of the arrow "line" */
+  background-color: #d90429; /* Arrow color */
+  z-index: 1;
+}
+
+.arrowHead {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent; /* Size of arrowhead */
+  border-bottom: 12px solid transparent; /* Size of arrowhead */
+  border-left: 18px solid #d90429; /* Arrowhead color and direction */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Positioning and rotation for arrows - This is the most complex part */
+/* Arrow from Step 1 to Step 2 */
+.arrowFlow1 { top: 8%; left: 68%; transform: rotate(30deg); width: 90px; }
+.arrowFlow1 .arrowHead { right: -15px; } /* Position head at the end */
+
+/* Arrow from Step 2 to Step 3 */
+.arrowFlow2 { top: 45%; left: 93%; transform: rotate(100deg) translateX(-50%); width: 100px; transform-origin: left center;}
+.arrowFlow2 .arrowHead { right: -15px; }
+
+/* Arrow from Step 3 to Step 4 */
+.arrowFlow3 { top: 86%; left: 70%; transform: rotate(150deg); width: 90px; }
+.arrowFlow3 .arrowHead { right: -15px; }
+
+/* Arrow from Step 4 to Step 5 */
+.arrowFlow4 { top: 86%; left: 23%; transform: rotate(210deg); width: 90px; }
+.arrowFlow4 .arrowHead { right: -15px; }
+
+/* Arrow from Step 5 to Step 6 */
+.arrowFlow5 { top: 45%; left: 7%; transform: rotate(260deg) translateX(-50%); width: 100px; transform-origin: left center; }
+.arrowFlow5 .arrowHead { right: -15px; }
+
+/* Arrow from Step 6 to Step 1 */
+.arrowFlow6 { top: 8%; left: 23%; transform: rotate(330deg); width: 90px; }
+.arrowFlow6 .arrowHead { right: -15px; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .diagramContainer {
+    transform: scale(0.7); /* Scale down further on smaller screens */
+    height: 450px; /* Adjust height too */
+  }
+  .centerCircle { width: 180px; height: 180px; font-size: 1.2rem; }
+  .processStep { width: 150px; min-height: 60px; font-size: 0.8rem; padding: 10px; }
+  .processItem { font-size: 0.8rem; padding: 10px; }
+
+  /* Arrow adjustments for smaller screens might be needed but can be complex */
+  .arrowFlow { display: none; } /* Hide arrows on very small screens for simplicity */
+}
+
+/* @media (max-width: 500px) {
+    .diagramContainer {
+        transform: scale(0.5);
+        height: 350px;
+        margin-top: -50px; 
+        margin-bottom: -30px;
+    }
+} */
+
+
+/* Media query to switch visibility */
+@media (max-width: 768px) { /* Your chosen breakpoint */
+  .desktopDiagram {
+    display: none; /* Hide the CSS diagram on smaller screens */
+  }
+
+  .mobileImage {
+    display: block; /* Show the fallback image on smaller screens */
+  }
+}
